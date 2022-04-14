@@ -23,16 +23,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
           body: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/sky.png"),
+                fit: BoxFit.cover,
+            ),
+            ),
             width: double.infinity,
-            child: Column(children: [
-              SizedBox(height: 30,),
-              SizedBox(width: 110, height: 84, child: Placeholder(),),
-              SizedBox(height: 20,),
-              Text('Введите логин в виде 10 цифр номера телефона',
-                style: TextStyle(fontSize: 14, color: Color.fromRGBO(0, 0, 0, 0.6)),),
-              SizedBox(height: 20,),
-              const SizedBox(width: 224,
+            height: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 50),
+            child: SingleChildScrollView(
+              child: Column(children: [
+                SizedBox(height: 30,),
+                const SizedBox(width: 110, height: 84,
+                  child: Image(image: AssetImage('assets/burd.png')),
+                ),
+                SizedBox(height: 20,),
+                Text('Введите логин в виде 10 цифр номера телефона',
+                  style: TextStyle(fontSize: 16, color: Color.fromRGBO(0, 0, 0, 0.6)),),
+                SizedBox(height: 20,),
+                const SizedBox(width: 224,
                 child: TextField(
+                  keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFeceff1),
@@ -74,10 +86,11 @@ class MyApp extends StatelessWidget {
               InkWell(child: const Text('Забыли пароль?', style: LinkTextStyle,),
                  onTap: () {}),
 
-            ],),
+              ],),
+            ),
           )
-      ),
-    );
+      ));
+
   }
 }
 
